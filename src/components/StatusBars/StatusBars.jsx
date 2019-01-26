@@ -1,25 +1,26 @@
-import React from "react";
-import styled from "styled-components";
+import React from 'react';
+import styled from 'styled-components';
 
-import StatusBar from "./StatusBar";
+import StatusBar from './StatusBar';
+
+const BARS = [
+  { label: 'ENERGY', icon: 'fas fa-battery-empty' },
+  { label: 'FUN', icon: 'fas fa-smile-beam' },
+  { label: 'HYGIENE', icon: 'fas fa-shower' }
+];
 
 const Container = styled.div`
   display: flex;
   justify-content: center;
-  background-color: pink;
   padding: 0.5rem 1rem;
 
   & > div:not(:last-child) {
     margin-right: 1rem;
   }
 `;
-
-const StatusBars = () => (
-  <Container>
-    <StatusBar />
-    <StatusBar />
-    <StatusBar />
-  </Container>
-);
+const bars = BARS.map(({ label, icon }) => (
+  <StatusBar label={label} icon={icon} />
+));
+const StatusBars = () => <Container>{bars}</Container>;
 
 export default StatusBars;

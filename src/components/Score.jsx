@@ -1,9 +1,12 @@
-import React from "react";
-import styled from "styled-components";
+import React from 'react';
+import styled from 'styled-components';
 
 const Container = styled.div`
   height: 1.5rem;
-  background: aqua;
+  margin: 0 1rem;
+
+  font-size: 1.5rem;
+  line-height: 1.5rem;
 `;
 
 const Score = () => <Container>SCORE: 100</Container>;
