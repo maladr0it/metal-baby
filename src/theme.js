@@ -3,7 +3,8 @@ const theme = {
   secondary: '#AED05A',
   tertiary: '#368796',
   background: '#FEFEFE',
-  highlight: '#6EEDB8'
+  highlight: '#6EEDB8',
+  disabled: '#ecf8ee'
 };
 
 export default theme;

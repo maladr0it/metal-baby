@@ -1,8 +1,8 @@
-import React, { useContext } from "react";
-import styled, { keyframes } from "styled-components";
+import React, { useContext } from 'react';
+import styled, { keyframes } from 'styled-components';
 
-import GameStateContext from "../GameStateContext";
-import TaskBlock from "./TaskBlock";
+import GameStateContext from '../GameStateContext';
+import TaskBlock from './TaskBlock';
 
 const trackLength = 6;
 const ticksBefore = 2;
@@ -23,9 +23,12 @@ const Track = styled.div`
 `;
 
 const TaskBlockContainer = styled.div`
-  width: ${(trackLength / (trackLength - 1)) * 100}%;
-  background-color: red;
   display: flex;
+  width: ${(trackLength / (trackLength - 1)) * 100}%;
+
+  background-color: ${({ theme }) => theme.disabled};
+  border-radius: 0.3rem;
+
   animation: ${slide} 0.5s;
   animation-fill-mode: forwards;
 `;
@@ -39,7 +42,7 @@ const TaskTrack = () => {
     Array.from({ length: trackLength }).map((_, i) =>
       tasks[i + time - ticksBefore] !== undefined
         ? tasks[i + time - ticksBefore]
-        : "NULL"
+        : 'NULL'
     );
 
   return (
