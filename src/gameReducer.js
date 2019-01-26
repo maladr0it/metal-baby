@@ -6,13 +6,17 @@ import {
   eatEffect,
   batheEffect,
   playEffect,
-  idleEffect
+  idleEffect,
+  maxNeeds
 } from "./gameConfig";
+import { clamp } from "./utils";
 
 export const initialState = {
-  time: 2, // to allow for past events to be seen
-  tasks: [IDLE, IDLE, IDLE, EAT],
-  needs: initialNeeds
+  time: 1, // to allow for past events to be seen
+  tasks: [IDLE, IDLE],
+  needs: initialNeeds,
+  playing: false,
+  gameOver: false
 };
 
 const effectMap = {
@@ -22,9 +26,26 @@ const effectMap = {
   [IDLE]: idleEffect
 };
 
+const checkGameOver = needs =>
+  Object.entries(needs).some(([need, value]) => value <= 0);
+
 const game = (state = initialState, action) => {
+  console.log(action);
+
+  // TODO: clean this up
   switch (action.type) {
     case ACTIONS.TICK: {
+      // check for game over
+      if (checkGameOver(state.needs)) {
+        console.log("game over");
+
+        return {
+          ...state,
+          playing: false,
+          gameOver: true
+        };
+      }
+
       const newTime = state.time + 1;
       let currentTask = state.tasks[newTime];
 
@@ -35,11 +56,17 @@ const game = (state = initialState, action) => {
         newTasks[newTime] = currentTask;
       }
 
+      console.log("current task:", currentTask);
+
       const taskEffect = effectMap[currentTask];
       // decay each need, apply the current action from the queue
       const newNeeds = Object.entries(state.needs).reduce(
         (acc, [need, value]) => {
-          acc[need] = value - needsDecay[need] + taskEffect[need];
+          acc[need] = clamp(
+            value - needsDecay[need] + taskEffect[need],
+            0,
+            maxNeeds[need]
+          );
           return acc;
         },
         {}
@@ -56,6 +83,12 @@ const game = (state = initialState, action) => {
       return {
         ...state,
         tasks: [...state.tasks, task]
+      };
+    }
+    case ACTIONS.GAME_STARTED: {
+      return {
+        ...initialState,
+        playing: true
       };
     }
     default:

@@ -1,13 +1,22 @@
 import React from "react";
 import styled from "styled-components";
 
-import { maxNeeds } from "../../gameConfig";
 import StatusBar from "./StatusBar";
 
+// TODO: change types to constants
 const BARS = [
-  { label: "ENERGY", max: maxNeeds.hunger, icon: "fas fa-utensils" },
-  { label: "FUN", max: maxNeeds.fun, icon: "fas fa-smile-beam" },
-  { label: "HYGIENE", max: maxNeeds.hygiene, icon: "fas fa-shower" }
+  {
+    type: "hunger",
+    icon: "fas fa-utensils"
+  },
+  {
+    type: "fun",
+    icon: "fas fa-smile-beam"
+  },
+  {
+    type: "hygiene",
+    icon: "fas fa-shower"
+  }
 ];
 
 const Container = styled.div`
@@ -20,9 +29,7 @@ const Container = styled.div`
   }
 `;
 
-const bars = BARS.map(({ label, icon }, i) => (
-  <StatusBar key={i} label={label} icon={icon} />
-));
+const bars = BARS.map((bar, i) => <StatusBar key={i} {...bar} />);
 
 const StatusBars = () => {
   return <Container>{bars}</Container>;

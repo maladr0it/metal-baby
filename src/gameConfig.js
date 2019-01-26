@@ -8,16 +8,16 @@ export const maxNeeds = {
 };
 
 export const initialNeeds = {
-  hunger: 20,
-  hygiene: 60,
+  hunger: 80,
+  hygiene: 80,
   fun: 80
 };
 
 // How much your stats decay each tick
 export const needsDecay = {
-  hunger: 2,
-  hygiene: 3,
-  fun: 4
+  hunger: 10,
+  hygiene: 10,
+  fun: 10
 };
 
 // The effects of each activity
@@ -31,7 +31,7 @@ export const eatEffect = {
 export const batheDuration = 2;
 export const batheEffect = {
   hunger: 0,
-  hygiene: +10,
+  hygiene: +100,
   fun: -10
 };
 

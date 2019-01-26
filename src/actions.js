@@ -12,3 +12,9 @@ export const taskAdded = task => {
     task
   };
 };
+
+export const gameStarted = () => {
+  return {
+    type: ACTIONS.GAME_STARTED
+  };
+};

@@ -1,18 +1,23 @@
-import React from "react";
-import styled, { keyframes } from "styled-components";
-import { tickPeriod } from '../../gameConfig';
+import React, { useContext } from "react";
+import styled from "styled-components";
 
-const StatusBar = ({ icon, width }) => (
-  <Container>
-    <IconContainer>
-      <i className={icon} />
-    </IconContainer>
+import { tickPeriod, maxNeeds } from "../../gameConfig";
+import GameStateContext from "../GameStateContext";
 
-    <ProgressBarTrack>
-      <ActiveProgressBar />
-    </ProgressBarTrack>
-  </Container>
-);
+const StatusBar = ({ type, icon }) => {
+  const { state } = useContext(GameStateContext);
+
+  return (
+    <Container>
+      <IconContainer>
+        <i className={icon} />
+      </IconContainer>
+      <ProgressBarTrack>
+        <ActiveProgressBar value={state.needs[type]} max={maxNeeds[type]} />
+      </ProgressBarTrack>
+    </Container>
+  );
+};
 
 const Container = styled.div`
   display: flex;
@@ -41,7 +46,7 @@ const ProgressBarTrack = styled.div`
   position: relative;
 
   flex: 1;
-  height: 0.5rem;
+  height: 1rem;
   margin-left: 0.1rem;
   border-radius: 0.3rem;
 
@@ -50,14 +55,11 @@ const ProgressBarTrack = styled.div`
 
 const ActiveProgressBar = styled.span`
   position: absolute;
-
-  width: 50%;
-  height: 0.5rem;
+  width: ${props => (props.value / props.max) * 100}%;
+  height: 100%;
   border-radius: 0.3rem;
   margin-left: 0.1rem;
-
-  transition: ${tickPeriod}s;
-
+  transition: ${tickPeriod}s linear;
   background-color: ${({ theme }) => theme.highlight};
 `;
 

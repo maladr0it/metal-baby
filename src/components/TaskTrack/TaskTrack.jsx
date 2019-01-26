@@ -1,12 +1,13 @@
 import React, { useContext } from "react";
 import styled, { keyframes } from "styled-components";
 
+import { tickPeriod } from "../../gameConfig";
 import { IDLE } from "../../constants/activityTypes";
 import GameStateContext from "../GameStateContext";
 import TaskBlock from "./TaskBlock";
 
 const trackLength = 6;
-const ticksBefore = 2;
+const ticksBefore = 1;
 const TaskTrack = () => {
   const { state } = useContext(GameStateContext);
   const { tasks, time } = state;
@@ -58,7 +59,7 @@ const TaskBlockContainer = styled.div`
   display: flex;
   width: ${(trackLength / (trackLength - 1)) * 100}%;
   background-color: ${({ theme }) => theme.disabled};
-  animation: ${slide} 0.5s;
+  animation: ${slide} ${tickPeriod}s linear;
   animation-fill-mode: forwards;
 `;
 
