@@ -24,17 +24,26 @@ export const needsDecay = {
 export const eatDuration = 1;
 export const eatEffect = {
   hunger: +20,
-  hygiene: -15
+  hygiene: -15,
+  fun: 0
 };
 
 export const batheDuration = 2;
 export const batheEffect = {
-  hygeine: +10,
+  hunger: 0,
+  hygiene: +10,
   fun: -10
 };
 
 export const playDuration = 3;
 export const playEffect = {
-  fun: +30,
-  hygiene: -20
+  hunger: 0,
+  hygiene: -20,
+  fun: +30
+};
+
+export const idleEffect = {
+  hunger: 0,
+  hygiene: 0,
+  fun: 0
 };

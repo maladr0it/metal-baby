@@ -1,11 +1,12 @@
-import React, { useContext } from 'react';
-import styled, { keyframes } from 'styled-components';
+import React, { useContext } from "react";
+import styled, { keyframes } from "styled-components";
 
-import GameStateContext from '../GameStateContext';
-import TaskBlock from './TaskBlock';
+import { IDLE } from "../../constants/activityTypes";
+import GameStateContext from "../GameStateContext";
+import TaskBlock from "./TaskBlock";
 
 const trackLength = 6;
-const ticksBefore = 2;
+const ticksBefore = 1;
 
 const Container = styled.div`
   flex: 1;
@@ -42,7 +43,7 @@ const TaskTrack = () => {
     Array.from({ length: trackLength }).map((_, i) =>
       tasks[i + time - ticksBefore] !== undefined
         ? tasks[i + time - ticksBefore]
-        : 'NULL'
+        : IDLE
     );
 
   return (

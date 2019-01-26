@@ -5,3 +5,10 @@ export const gameTicked = () => {
     type: ACTIONS.TICK
   };
 };
+
+export const taskAdded = task => {
+  return {
+    type: ACTIONS.TASK_ADDED,
+    task
+  };
+};
