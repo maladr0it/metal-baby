@@ -11,7 +11,7 @@ import {
 
 export const initialState = {
   time: 2, // to allow for past events to be seen
-  tasks: [IDLE, IDLE, EAT],
+  tasks: [IDLE, IDLE, IDLE, EAT],
   needs: initialNeeds
 };
 
@@ -23,20 +23,18 @@ const effectMap = {
 };
 
 const game = (state = initialState, action) => {
-  console.log(action, state.tasks);
-
   switch (action.type) {
     case ACTIONS.TICK: {
-      const currentTask = state.tasks[state.time];
-      console.log(currentTask);
+      const newTime = state.time + 1;
+      let currentTask = state.tasks[newTime];
 
       let newTasks = [...state.tasks];
       // if no task, add IDLE block
       if (currentTask === undefined) {
-        newTasks = [...newTasks, IDLE];
+        currentTask = IDLE;
+        newTasks[newTime] = currentTask;
       }
 
-      // const currentTask = state.tasks[state.time] || IDLE;
       const taskEffect = effectMap[currentTask];
       // decay each need, apply the current action from the queue
       const newNeeds = Object.entries(state.needs).reduce(
@@ -49,8 +47,8 @@ const game = (state = initialState, action) => {
       return {
         ...state,
         needs: newNeeds,
-        newTasks,
-        time: state.time + 1
+        tasks: newTasks,
+        time: newTime
       };
     }
     case ACTIONS.TASK_ADDED: {

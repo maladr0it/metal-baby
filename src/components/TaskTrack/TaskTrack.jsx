@@ -21,15 +21,13 @@ const slide = keyframes`
 
 const Track = styled.div`
   overflow: hidden;
+  border-radius: 0.3rem;
 `;
 
 const TaskBlockContainer = styled.div`
   display: flex;
   width: ${(trackLength / (trackLength - 1)) * 100}%;
-
   background-color: ${({ theme }) => theme.disabled};
-  border-radius: 0.3rem;
-
   animation: ${slide} 0.5s;
   animation-fill-mode: forwards;
 `;

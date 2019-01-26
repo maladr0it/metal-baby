@@ -1,5 +1,5 @@
-import React from 'react';
-import styled, { keyframes } from 'styled-components';
+import React from "react";
+import styled, { keyframes } from "styled-components";
 
 const StatusBar = ({ icon, width }) => (
   <Container>
@@ -49,7 +49,7 @@ const ProgressBarTrack = styled.div`
 const ActiveProgressBar = styled.span`
   position: absolute;
 
-  width: {width};
+  width: 50%;
   height: 0.5rem;
   border-radius: 0.2rem;
   margin-left: 0.1rem;
