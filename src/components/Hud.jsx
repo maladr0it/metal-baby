@@ -9,6 +9,7 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   margin: 0 1rem 1rem;
+  border-radius: 0.3rem;
 
   background-color: ${({ theme }) => theme.background};
 `;

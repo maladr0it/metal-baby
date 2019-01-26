@@ -22,24 +22,26 @@ const IconContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 2rem;
-  height: 2rem;
+  width: 1.5rem;
+  height: 1.5rem;
   border-radius: 50%;
 
   background-image: ${({ theme }) =>
     `linear-gradient(-45deg, ${theme.primary},  ${theme.secondary})`};
   color: ${({ theme }) => theme.background};
+  font-size: 0.8rem;
 `;
 
-const fill = keyframes`
+// const fill = keyframes`
 
-`;
+// `;
 
 const ProgressBar = styled.div`
   flex: 1;
-  height: 0.3rem;
+  height: 0.5rem;
   background-color: ${({ theme }) => theme.highlight};
-  border-radius: 0 0.2rem 0.2rem 0;
+  border-radius: 0.2rem;
+  margin-left: 0.1rem;
 `;
 
 export default StatusBar;
