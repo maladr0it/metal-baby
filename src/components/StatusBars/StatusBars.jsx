@@ -5,7 +5,6 @@ import StatusBar from "./StatusBar";
 
 const Container = styled.div`
   display: flex;
-  /* flex-direction: column; */
   justify-content: center;
   background-color: pink;
   padding: 0.5rem 1rem;
