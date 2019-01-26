@@ -47,7 +47,9 @@ const TaskTrack = () => {
 
   // set state to have new time
   const advance = () => {
-    // setTime(time + 1);
+    dispatch({
+      type: "TICK"
+    });
   };
 
   return (
