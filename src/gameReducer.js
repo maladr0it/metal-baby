@@ -1,9 +1,20 @@
-import * as ACTIONS from "./constants/actionTypes";
-import { initialNeeds, needsDecay } from "./gameConfig";
+import * as ACTIONS from './constants/actionTypes';
+import { initialNeeds, needsDecay } from './gameConfig';
 
 export const initialState = {
   time: 2, // to allow for past events to be seen
-  tasks: ["NULL", "NULL", "EAT", "BATHE"],
+  tasks: [
+    'NULL',
+    'NULL',
+    'EAT',
+    'BATHE',
+    'EAT',
+    'BATHE',
+    'EAT',
+    'BATHE',
+    'EAT',
+    'BATHE'
+  ],
   needs: initialNeeds
 };
 
