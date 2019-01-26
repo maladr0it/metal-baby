@@ -1,22 +1,83 @@
-import React from "react";
-import styled from "styled-components";
+import React, { useState } from "react";
+import styled, { keyframes } from "styled-components";
+
+import TaskBlock from "./TaskBlock";
+
+// 2 dummy periods are added for the start of the game
+const initialTasks = [
+  "NULL",
+  "NULL",
+  "BATH",
+  "EAT",
+  "PLAY",
+  "PLAY",
+  "PLAY",
+  "EAT",
+  "NULL",
+  "EAT",
+  "EAT",
+  "NULL",
+  "EAT",
+  "NULL",
+  "PLAY"
+];
+
+const trackLength = 6;
+const ticksBefore = 2;
 
 const Container = styled.div`
   flex: 1;
-  background-color: blue;
+  background-color: #6ed3ff;
+  padding: 0.5rem;
+`;
 
-  padding: 1rem;
+const slide = keyframes`
+  to {
+    transform: translateX(-${100 / trackLength}%);
+  }
 `;
 
 const Track = styled.div`
-  height: 100%;
-  background-color: maroon;
+  background-color: #fff185;
+  overflow: hidden;
 `;
 
-const TaskTrack = () => (
-  <Container>
-    <Track />
-  </Container>
-);
+const TaskBlockContainer = styled.div`
+  width: ${(trackLength / (trackLength - 1)) * 100}%;
+  background-color: red;
+  display: flex;
+  animation: ${slide} 0.5s;
+  animation-fill-mode: forwards;
+`;
+
+const TaskTrack = ({ tasks = initialTasks }) => {
+  const [time, setTime] = useState(ticksBefore);
+
+  // get only the tasks within the acceptable range
+  const getVisibleTasks = () =>
+    Array.from({ length: trackLength }).map((_, i) =>
+      tasks[i + time - ticksBefore] !== undefined
+        ? tasks[i + time - ticksBefore]
+        : "NULL"
+    );
+
+  // set state to have new time
+  const advance = () => {
+    setTime(time + 1);
+  };
+
+  return (
+    <Container>
+      <button onClick={advance}>ADVANCE</button>
+      <Track>
+        <TaskBlockContainer key={time}>
+          {getVisibleTasks().map((task, i) => (
+            <TaskBlock key={i} type={task} />
+          ))}
+        </TaskBlockContainer>
+      </Track>
+    </Container>
+  );
+};
 
 export default TaskTrack;
