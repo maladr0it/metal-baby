@@ -1,5 +1,8 @@
-import React from 'react';
-import styled from 'styled-components';
+import React, { useContext } from "react";
+import styled from "styled-components";
+
+import { gameTicked } from "../actions";
+import GameStateContext from "./GameStateContext";
 
 const Container = styled.div`
   height: 1.5rem;
@@ -9,6 +12,15 @@ const Container = styled.div`
   line-height: 1.5rem;
 `;
 
-const Score = () => <Container>SCORE: 100</Container>;
+const Score = () => {
+  const { dispatch } = useContext(GameStateContext);
+
+  return (
+    <Container>
+      <span>SCORE: 100</span>
+      <button onClick={() => dispatch(gameTicked())}>ONCLICK</button>
+    </Container>
+  );
+};
 
 export default Score;

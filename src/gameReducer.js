@@ -11,6 +11,8 @@ export const initialState = {
 };
 
 const game = (state = initialState, action) => {
+  console.log(action);
+
   switch (action.type) {
     case ACTIONS.TICK: {
       return {

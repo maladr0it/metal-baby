@@ -19,7 +19,6 @@ const slide = keyframes`
 `;
 
 const Track = styled.div`
-  background-color: #fff185;
   overflow: hidden;
 `;
 
@@ -32,9 +31,8 @@ const TaskBlockContainer = styled.div`
 `;
 
 const TaskTrack = () => {
-  const { state, dispatch } = useContext(GameStateContext);
+  const { state } = useContext(GameStateContext);
   const { tasks, time } = state;
-  // const [time, setTime] = useState(ticksBefore);
 
   // get only the tasks within the acceptable range
   const getVisibleTasks = () =>
@@ -44,16 +42,8 @@ const TaskTrack = () => {
         : "NULL"
     );
 
-  // set state to have new time
-  const advance = () => {
-    dispatch({
-      type: "TICK"
-    });
-  };
-
   return (
     <Container>
-      <button onClick={advance}>ADVANCE</button>
       <Track>
         <TaskBlockContainer key={time}>
           {getVisibleTasks().map((task, i) => (

@@ -2,17 +2,13 @@ import React from "react";
 import styled from "styled-components";
 
 const Container = styled.div`
-  background-color: orange;
-
   flex: 1;
   border: 1px solid black;
   padding: 0.2rem;
   visibility: ${props => (props.type === "NULL" ? "hidden" : "visible")};
 `;
 
-const Content = styled.div`
-  background-color: pink;
-`;
+const Content = styled.div``;
 
 const TaskBlock = ({ type }) => (
   <Container type={type}>

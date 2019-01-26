@@ -1,12 +1,12 @@
-import React from 'react';
-import styled from 'styled-components';
+import React from "react";
+import styled from "styled-components";
 
-import StatusBar from './StatusBar';
+import StatusBar from "./StatusBar";
 
 const BARS = [
-  { label: 'ENERGY', icon: 'fas fa-battery-empty' },
-  { label: 'FUN', icon: 'fas fa-smile-beam' },
-  { label: 'HYGIENE', icon: 'fas fa-shower' }
+  { label: "ENERGY", icon: "fas fa-battery-empty" },
+  { label: "FUN", icon: "fas fa-smile-beam" },
+  { label: "HYGIENE", icon: "fas fa-shower" }
 ];
 
 const Container = styled.div`
@@ -18,9 +18,11 @@ const Container = styled.div`
     margin-right: 1rem;
   }
 `;
-const bars = BARS.map(({ label, icon }) => (
-  <StatusBar label={label} icon={icon} />
+
+const bars = BARS.map(({ label, icon }, i) => (
+  <StatusBar key={i} label={label} icon={icon} />
 ));
+
 const StatusBars = () => <Container>{bars}</Container>;
 
 export default StatusBars;
