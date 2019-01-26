@@ -1,8 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
-// import MapImage from "../assets/test_map.png";
-import MapImage from "../assets/test_map2.png";
+import MapImage from "../assets/test_map3.png";
 
 const Container = styled.div`
   width: 100vw;

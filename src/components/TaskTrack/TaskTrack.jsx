@@ -1,26 +1,8 @@
-import React, { useState } from "react";
+import React, { useContext } from "react";
 import styled, { keyframes } from "styled-components";
 
+import GameStateContext from "../GameStateContext";
 import TaskBlock from "./TaskBlock";
-
-// 2 dummy periods are added for the start of the game
-const initialTasks = [
-  "NULL",
-  "NULL",
-  "BATH",
-  "EAT",
-  "PLAY",
-  "PLAY",
-  "PLAY",
-  "EAT",
-  "NULL",
-  "EAT",
-  "EAT",
-  "NULL",
-  "EAT",
-  "NULL",
-  "PLAY"
-];
 
 const trackLength = 6;
 const ticksBefore = 2;
@@ -50,8 +32,10 @@ const TaskBlockContainer = styled.div`
   animation-fill-mode: forwards;
 `;
 
-const TaskTrack = ({ tasks = initialTasks }) => {
-  const [time, setTime] = useState(ticksBefore);
+const TaskTrack = () => {
+  const { state, dispatch } = useContext(GameStateContext);
+  const { tasks, time } = state;
+  // const [time, setTime] = useState(ticksBefore);
 
   // get only the tasks within the acceptable range
   const getVisibleTasks = () =>
@@ -63,7 +47,7 @@ const TaskTrack = ({ tasks = initialTasks }) => {
 
   // set state to have new time
   const advance = () => {
-    setTime(time + 1);
+    // setTime(time + 1);
   };
 
   return (

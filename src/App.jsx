@@ -1,23 +1,14 @@
 import React from "react";
-import styled from "styled-components";
 
-import Score from "./components/Score";
-import HouseMap from "./components/HouseMap";
-import Hud from "./components/Hud";
+import { GameStateProvider } from "./components/GameStateContext";
+import Game from "./components/Game";
 
-const Container = styled.div`
-  height: 100%;
-  background-color: pink;
-  display: flex;
-  flex-direction: column;
-`;
-
-const App = () => (
-  <Container>
-    <Score />
-    <HouseMap />
-    <Hud />
-  </Container>
-);
+const App = () => {
+  return (
+    <GameStateProvider>
+      <Game />
+    </GameStateProvider>
+  );
+};
 
 export default App;
