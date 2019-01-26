@@ -1,3 +1,1 @@
-export default {
-  TICK: "TICK"
-};
+export const TICK = "TICK";

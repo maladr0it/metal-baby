@@ -1,5 +1,3 @@
-export default {
-  EAT: "EAT",
-  BATHE: "BATHE",
-  PLAY: "PLAY"
-};
+export const EAT = "EAT";
+export const BATHE = "BATHE";
+export const PLAY = "PLAY";

@@ -12,13 +12,21 @@ const Container = styled.div`
   line-height: 1.5rem;
 `;
 
+const Debug = styled.span`
+  font-size: 0.5rem;
+  margin-right: 0.2rem;
+`;
+
 const Score = () => {
-  const { dispatch } = useContext(GameStateContext);
+  const { state, dispatch } = useContext(GameStateContext);
 
   return (
     <Container>
       <span>SCORE: 100</span>
       <button onClick={() => dispatch(gameTicked())}>ONCLICK</button>
+      <Debug>HUN: {state.needs.hunger}</Debug>
+      <Debug>HYG: {state.needs.hygiene}</Debug>
+      <Debug>FUN: {state.needs.fun}</Debug>
     </Container>
   );
 };

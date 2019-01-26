@@ -1,4 +1,4 @@
-import ACTIONS from "./constants/actionTypes";
+import * as ACTIONS from "./constants/actionTypes";
 
 export const gameTicked = () => {
   return {
