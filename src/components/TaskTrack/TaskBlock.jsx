@@ -6,11 +6,16 @@ import { IDLE } from "../../constants/activityTypes";
 const Container = styled.div`
   flex: 1;
   border: ${({ theme }) => `1px solid ${theme.primary}`};
-  padding: 0.2rem;
+  border-radius: 0.3rem;
+  margin: 0 0.1rem;
 
   background-color: ${({ theme }) => theme.primary};
   visibility: ${props => (props.type === IDLE ? "hidden" : "visible")};
   text-align: center;
+
+  &:not(:first-child) {
+    padding-left: 0.2rem;
+  }
 `;
 const Content = styled.div``;
 
