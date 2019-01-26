@@ -7,9 +7,10 @@ import Hud from "./Hud";
 
 const Container = styled.div`
   height: 100%;
-  background-color: pink;
   display: flex;
   flex-direction: column;
+  background-image: ${({ theme }) =>
+    `linear-gradient(${theme.tertiary}, ${theme.primary})`};
 `;
 
 const Game = () => {

@@ -9,7 +9,6 @@ const ticksBefore = 2;
 
 const Container = styled.div`
   flex: 1;
-  /* background-color: #6ed3ff; */
   padding: 0.5rem;
 `;
 
