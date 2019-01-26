@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 const Container = styled.div`
-  height: 2rem;
+  height: 1.5rem;
   background: aqua;
 `;
 
