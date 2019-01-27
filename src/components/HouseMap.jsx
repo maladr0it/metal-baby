@@ -13,17 +13,29 @@ const HouseMap = () => (
   <Container>
     <Modal />
     <StyledImg src={MapImage} />
-    <Button>EAT</Button>
+    <Button className="eat">EAT</Button>
+    <Button className="tv">WATCH TV</Button>
+    <Button className="shower">SHOWER</Button>
   </Container>
 );
 
 const Container = styled.div`
   position: relative;
 
-  ${Button} {
+  ${Button}.eat {
     position: absolute;
     top: 30%;
-    left: 30%;
+    left: 25%;
+  }
+  ${Button}.tv {
+    position: absolute;
+    top: 65%;
+    left: 25%;
+  }
+  ${Button}.shower {
+    position: absolute;
+    top: 45%;
+    left: 60%;
   }
 `;
 

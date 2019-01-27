@@ -1,4 +1,21 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
+
+const activeStyle = css`
+  cursor: pointer;
+
+  &:hover {
+    filter: brightness(1.04);
+  }
+
+  &:active {
+    filter: brightness(1.08);
+  }
+`;
+
+const disabledStyle = css`
+  cursor: default;
+  color: ${({ theme }) => theme.disabled};
+`;
 
 const Button = styled.button`
   outline: none;
@@ -14,14 +31,7 @@ const Button = styled.button`
   letter-spacing: 0.2rem;
   text-transform: uppercase;
 
-  cursor: pointer;
-
-  &:hover {
-    filter: brightness(1.04);
-  }
-  &:active {
-    filter: brightness(1.08);
-  }
+  ${({ disabled }) => (disabled ? disabledStyle : activeStyle)}
 `;
 
 export default Button;

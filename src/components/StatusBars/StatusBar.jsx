@@ -55,7 +55,7 @@ const IconContainer = styled.div`
   height: 1.5rem;
   border-radius: 50%;
 
-  font-size: 0.8rem;
+  font-size: 1rem;
 
   background-image: ${({ theme }) =>
     `linear-gradient(-45deg, ${theme.primary}, ${theme.secondary})`};
