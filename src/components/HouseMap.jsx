@@ -2,8 +2,11 @@ import React, { useContext } from "react";
 import styled from "styled-components";
 
 import { taskAdded } from "../actions";
+import { getCurrentTask } from "../selectors";
 import { EAT, BATHE, PLAY, IDLE } from "../constants/taskTypes";
 import GameStateContext from "./GameStateContext";
+
+import BlankPixel from "../assets/blank_pixel.png";
 
 import EatImage from "../assets/test_map3.png";
 import BatheImage from "../assets/test_map4.png";
@@ -38,16 +41,25 @@ const Container = styled.div`
     left: 60%;
   }
 `;
-
-const StyledImg = styled.img`
+// A square image to make room for the image before it loads in
+const ImageBoundsPusher = styled.img`
   width: 100%;
+`;
+
+const MapImageContainer = styled.div`
+  position: absolute;
+  top: 0;
+  img {
+    width: 100%;
+  }
 `;
 
 const HouseMap = () => {
   const { state, dispatch } = useContext(GameStateContext);
   const { playing } = state;
-  const currentTask = state.tasks[state.time];
-  const taskImage = taskImageMap[currentTask];
+
+  const currentTask = getCurrentTask(state);
+  const TaskImage = taskImageMap[currentTask];
 
   const eat = () => {
     dispatch(taskAdded(EAT));
@@ -61,7 +73,10 @@ const HouseMap = () => {
 
   return (
     <Container>
-      <StyledImg src={taskImage} />
+      <ImageBoundsPusher src={BlankPixel} />
+      <MapImageContainer>
+        <img src={TaskImage} alt="game state" />
+      </MapImageContainer>
       {playing && (
         <>
           <Button className="eat" onClick={eat}>

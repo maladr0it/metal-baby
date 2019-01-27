@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import styled from "styled-components";
 
-import { ticksPerYear } from "../gameConfig";
+import { getAge } from "../selectors";
 import GameStateContext from "./GameStateContext";
 
 const Container = styled.div`
@@ -18,12 +18,11 @@ const Debug = styled.span`
 
 const Score = () => {
   const { state } = useContext(GameStateContext);
-  const { time } = state;
-  const age = Math.floor(time / ticksPerYear);
+  const age = getAge(state);
 
   return (
     <Container>
-      <span>SCORE: {age}</span>
+      <span>Age: {age}</span>
     </Container>
   );
 };
