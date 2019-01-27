@@ -25,7 +25,7 @@ const Container = styled.div`
   justify-content: center;
 
   & > div:not(:last-child) {
-    margin-right: 1rem;
+    margin-right: 0.5rem;
   }
 `;
 

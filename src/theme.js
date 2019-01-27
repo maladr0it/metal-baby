@@ -4,7 +4,8 @@ const theme = {
   tertiary: '#368796',
   background: '#FEFEFE',
   highlight: '#6EEDB8',
-  disabled: '#ecf8ee'
+  disabled: '#ecf8ee',
+  warning: '#EF9F64'
 };
 
 export default theme;

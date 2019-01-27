@@ -29,7 +29,7 @@ const StatusBar = ({ type, icon }) => {
 
   return (
     <Container>
-      <IconContainer>
+      <IconContainer growth={growth}>
         <i className={icon} />
       </IconContainer>
       <ProgressBarTrack>
@@ -47,6 +47,20 @@ const Container = styled.div`
   align-items: center;
 `;
 
+const growthStyle = ({ growth, theme }) => {
+  if (growth === "INCREASING") {
+    return css`
+      background: ${theme.highlight} none;
+      transition: width ${tickPeriod / 6}s linear;
+    `;
+  } else if (growth === "DECREASING") {
+    return css`
+      background: ${theme.warning} none;
+      transition: width ${tickPeriod / 6}s linear;
+    `;
+  }
+};
+
 const IconContainer = styled.div`
   display: flex;
   justify-content: center;
@@ -56,45 +70,32 @@ const IconContainer = styled.div`
   border-radius: 50%;
 
   font-size: 1rem;
-
-  background-image: ${({ theme }) =>
-    `linear-gradient(-45deg, ${theme.primary}, ${theme.secondary})`};
+  background-color: ${({ theme }) => theme.primary};
   color: ${({ theme }) => theme.background};
+  box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.1);
+
+  ${growthStyle};
 `;
 
 const ProgressBarTrack = styled.div`
   position: relative;
+  overflow: hidden;
 
   flex: 1;
-  height: 1rem;
-  margin-left: 0.1rem;
-  border-radius: 0.3rem;
+  height: 1.2rem;
+  border-radius: 0.6rem;
+  margin-left: 0.2rem;
 
-  background-color: #ecf8ee;
+  background-color: ${({ theme }) => theme.background};
+  box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.1);
 `;
-
-const growthStyle = ({ growth }) => {
-  if (growth === "INCREASING") {
-    return css`
-      background-color: green;
-      transition: width ${tickPeriod / 6}s linear;
-    `;
-  } else if (growth === "DECREASING") {
-    return css`
-      background-color: red;
-      transition: width ${tickPeriod / 6}s linear;
-    `;
-  }
-};
 
 const ActiveProgressBar = styled.span`
   position: absolute;
   width: ${props => (props.value / props.max) * 100}%;
   height: 100%;
-  border-radius: 0.3rem;
-  margin-left: 0.1rem;
   transition: width ${tickPeriod}s linear;
-  background-color: ${({ theme }) => theme.highlight};
+  background-color: ${({ theme }) => theme.primary};
   ${growthStyle};
 `;
 

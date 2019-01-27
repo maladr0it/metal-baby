@@ -15,6 +15,7 @@ const Container = styled.div`
   margin: 1rem 0;
   overflow: hidden;
   border-radius: 0.3rem;
+  box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.1);
 `;
 
 const slide = keyframes`
