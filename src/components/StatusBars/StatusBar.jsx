@@ -84,6 +84,7 @@ const IconContainer = styled.div`
   box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.1);
 
   ${growthStyle};
+  ${dangerStyle};
 `;
 
 const ProgressBarTrack = styled.div`
@@ -105,7 +106,9 @@ const ActiveProgressBar = styled.span`
   height: 100%;
   transition: width ${tickPeriod}s linear;
   background-color: ${({ theme }) => theme.primary};
+
   ${growthStyle};
+  ${dangerStyle};
 `;
 
 export default StatusBar;

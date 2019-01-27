@@ -1,13 +1,13 @@
-import React from 'react';
-import styled from 'styled-components';
+import React from "react";
+import styled from "styled-components";
 
-import { IDLE } from '../../constants/taskTypes';
+import { IDLE } from "../../constants/taskTypes";
 
 // TODO: change types to constants
 const ICONS = {
-  EAT: 'fas fa-utensils',
-  PLAY: 'fas fa-smile-beam',
-  BATHE: 'fas fa-shower'
+  EAT: "fas fa-utensils",
+  PLAY: "fas fa-smile-beam",
+  BATHE: "fas fa-shower"
 };
 
 const Container = styled.div`
@@ -20,15 +20,15 @@ const Container = styled.div`
   margin: 0 0.1rem;
 
   background-color: ${({ theme }) => theme.primary};
-  visibility: ${props => (props.type === IDLE ? 'hidden' : 'visible')};
+  visibility: ${props => (props.type === IDLE ? "hidden" : "visible")};
   text-align: center;
-  height: 100%
+  color: ${({ theme }) => theme.background};
+  height: 100%;
   font-size: 1.5rem;
 
   &:not(:first-child) {
     padding-left: 0.2rem;
   }
-
 `;
 
 const TaskBlock = ({ type }) => (

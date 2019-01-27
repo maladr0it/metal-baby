@@ -14,14 +14,14 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  background-image: ${({ theme }) =>
-    `linear-gradient(${theme.tertiary}, ${theme.primary})`};
   max-width: 70vh;
   margin: 0 auto;
 `;
 
 const Content = styled.div`
   max-height: 150vw;
+  background-image: ${({ theme }) =>
+    `linear-gradient(${theme.tertiary}, ${theme.primary})`};
   display: flex;
   flex: 1;
   flex-direction: column;
