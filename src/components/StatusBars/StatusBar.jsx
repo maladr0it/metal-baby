@@ -77,10 +77,12 @@ const growthStyle = ({ growth }) => {
   if (growth === "INCREASING") {
     return css`
       background-color: green;
+      transition: width ${tickPeriod / 6}s linear;
     `;
   } else if (growth === "DECREASING") {
     return css`
       background-color: red;
+      transition: width ${tickPeriod / 6}s linear;
     `;
   }
 };

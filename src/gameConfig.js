@@ -1,6 +1,8 @@
 // How many ms per game-tick
 export const tickPeriod = 1;
 
+export const ticksPerYear = 5;
+
 export const maxNeeds = {
   hunger: 100,
   hygiene: 100,
