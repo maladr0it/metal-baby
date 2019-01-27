@@ -6,6 +6,12 @@ import { getAge, getZeroNeed } from "../../selectors";
 import GameStateContext from "../GameStateContext";
 import Button from "../Button";
 
+const gameOverMessageMap = {
+  hunger: `😱Your baby died of hunger.`,
+  hygiene: `💩Your baby died from poor hygiene.`,
+  fun: `😔Your baby died of boredom...`
+};
+
 const Container = styled.div`
   padding: 1rem;
   border-radius: 0.3rem;
@@ -20,11 +26,10 @@ const Container = styled.div`
   }
 `;
 
-const gameOverMessageMap = {
-  hunger: `Your baby died of hunger`,
-  hygiene: `Your baby died from poor hygiene`,
-  fun: `Your baby died of boredom...`
-};
+const Title = styled.h1`
+  font-size: 2rem;
+  margin-bottom: 1rem;
+`;
 
 const GameOverScreen = () => {
   const { state, dispatch } = useContext(GameStateContext);
@@ -34,9 +39,10 @@ const GameOverScreen = () => {
 
   return (
     <Container>
-      <h1>GAME_OVER</h1>
-      <p>Your baby lived to be {age} years old.</p>
+      <Title>Game Over</Title>
       <p>{message}</p>
+      <br />
+      <p>Your baby lived to be {age} years old.</p>
       <Button onClick={() => dispatch(gameStarted())}>RESTART</Button>
     </Container>
   );

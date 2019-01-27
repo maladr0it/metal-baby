@@ -7,6 +7,7 @@ import GameOverScreen from "./GameOverScreen";
 
 const Dimmer = styled.div`
   position: absolute;
+  z-index: 200;
 
   width: 100%;
   max-width: 70vh;

@@ -17,27 +17,27 @@ export const initialNeeds = {
 
 // How much your stats decay each tick
 export const needsDecay = {
-  hunger: 10,
-  hygiene: 5,
-  fun: 4
+  hunger: 12,
+  hygiene: 10,
+  fun: 8
 };
 
 // The effects of each activity
 export const eatEffect = {
-  hunger: +20,
-  hygiene: -15,
+  hunger: +30,
+  hygiene: -10,
   fun: 0
 };
 
 export const batheEffect = {
   hunger: 0,
-  hygiene: +10,
+  hygiene: +30,
   fun: -10
 };
 
 export const playEffect = {
-  hunger: 0,
-  hygiene: -20,
+  hunger: -10,
+  hygiene: 0,
   fun: +30
 };
 

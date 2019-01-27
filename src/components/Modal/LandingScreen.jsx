@@ -1,10 +1,10 @@
-import React, { useContext } from 'react';
-import styled from 'styled-components';
+import React, { useContext } from "react";
+import styled from "styled-components";
 
-import Button from '../Button';
+import Button from "../Button";
 
-import { gameStarted } from '../../actions';
-import GameStateContext from '../GameStateContext';
+import { gameStarted } from "../../actions";
+import GameStateContext from "../GameStateContext";
 
 const Container = styled.div`
   padding: 1rem;
@@ -24,7 +24,7 @@ const LandingScreen = () => {
   const { dispatch } = useContext(GameStateContext);
   return (
     <Container>
-      <h1>Take good care of your baby robot!</h1>
+      <h1>{"😊Take good care of your baby robot!"}</h1>
       <Button onClick={() => dispatch(gameStarted())}>START!</Button>
     </Container>
   );

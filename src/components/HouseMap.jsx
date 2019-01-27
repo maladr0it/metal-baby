@@ -8,10 +8,10 @@ import GameStateContext from "./GameStateContext";
 
 import BlankPixel from "../assets/blank_pixel.png";
 
-import EatImage from "../assets/test_map3.png";
-import BatheImage from "../assets/test_map4.png";
-import PlayImage from "../assets/test_map5.png";
-import IdleImage from "../assets/test_map6.png";
+import EatImage from "../assets/robot-eating.png";
+import BatheImage from "../assets/robot-bathing.png";
+import PlayImage from "../assets/robot-playing.png";
+import IdleImage from "../assets/robot-idle.png";
 
 import Button from "./Button";
 
@@ -24,21 +24,22 @@ const taskImageMap = {
 
 const Container = styled.div`
   position: relative;
+  ${Button} {
+    position: absolute;
+    transform: translateX(-50%) translateY(-50%);
+  }
 
   ${Button}.eat {
-    position: absolute;
-    top: 30%;
-    left: 25%;
+    top: 22%;
+    left: 41%;
   }
   ${Button}.play {
-    position: absolute;
-    top: 65%;
-    left: 25%;
+    top: 82%;
+    left: 30%;
   }
   ${Button}.bathe {
-    position: absolute;
-    top: 45%;
-    left: 60%;
+    top: 65%;
+    left: 75%;
   }
 `;
 // A square image to make room for the image before it loads in

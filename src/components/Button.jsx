@@ -1,11 +1,13 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 const Button = styled.button`
-  outline: none;
   height: 2rem;
   border: none;
+  outline: none;
   border-radius: 1rem;
   padding: 0.5rem 1rem;
+
+  background-color: ${({ theme }) => theme.primary};
 
   background-image: ${({ theme }) =>
     `linear-gradient(-45deg, ${theme.primary}, ${theme.secondary})`};
