@@ -7,20 +7,11 @@ import { EAT, BATHE, PLAY, IDLE } from "../constants/taskTypes";
 import GameStateContext from "./GameStateContext";
 
 import BlankPixel from "../assets/blank_pixel.png";
-
 import EatImage from "../assets/robot-eating.png";
 import BatheImage from "../assets/robot-bathing.png";
 import PlayImage from "../assets/robot-playing.png";
 import IdleImage from "../assets/robot-idle.png";
-
 import Button from "./Button";
-
-const taskImageMap = {
-  [EAT]: EatImage,
-  [BATHE]: BatheImage,
-  [PLAY]: PlayImage,
-  [IDLE]: IdleImage
-};
 
 const Container = styled.div`
   position: relative;
@@ -53,7 +44,7 @@ const MapImageContainer = styled.div`
   width: 100%;
 `;
 
-const ZImage = styled.img`
+const CondImage = styled.img`
   width: 100%;
 `;
 
@@ -62,7 +53,6 @@ const HouseMap = () => {
   const { playing } = state;
 
   const currentTask = getCurrentTask(state);
-  const TaskImage = taskImageMap[currentTask];
 
   const eat = () => {
     dispatch(taskAdded(EAT));
@@ -78,12 +68,10 @@ const HouseMap = () => {
     <Container>
       <ImageBoundsPusher src={BlankPixel} />
       <MapImageContainer>
-        <ZImage src={EatImage} hidden={currentTask !== EAT} />
-        <ZImage src={BatheImage} hidden={currentTask !== BATHE} />
-        <ZImage src={PlayImage} hidden={currentTask !== PLAY} />
-        <ZImage src={IdleImage} hidden={currentTask !== IDLE} />
-
-        {/* <img src={TaskImage} alt="game state" /> */}
+        <CondImage src={EatImage} hidden={currentTask !== EAT} />
+        <CondImage src={BatheImage} hidden={currentTask !== BATHE} />
+        <CondImage src={PlayImage} hidden={currentTask !== PLAY} />
+        <CondImage src={IdleImage} hidden={currentTask !== IDLE} />
       </MapImageContainer>
       {playing && (
         <>
