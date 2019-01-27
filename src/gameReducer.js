@@ -37,7 +37,6 @@ const game = (state = initialState, action) => {
     case ACTIONS.TICK: {
       // check for game over
       if (checkGameOver(state.needs)) {
-        console.log("game over");
         return {
           ...state,
           playing: false,

@@ -49,6 +49,7 @@ const ImageBoundsPusher = styled.img`
 const MapImageContainer = styled.div`
   position: absolute;
   top: 0;
+  width: 100%;
   img {
     width: 100%;
   }

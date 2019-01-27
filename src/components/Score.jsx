@@ -1,18 +1,16 @@
-import React, { useContext } from 'react';
-import styled from 'styled-components';
+import React, { useContext } from "react";
+import styled from "styled-components";
 
 import { getAge } from "../selectors";
 import GameStateContext from "./GameStateContext";
 
 const Container = styled.div`
-  flex: 1 1 0;
-
   height: 2rem;
+  flex: 1;
 
   color: ${({ theme }) => theme.tertiary};
-
   font-size: 1.3rem;
-  line-height: 1.3rem;
+  margin-bottom: -0.5rem;
 `;
 
 const Debug = styled.span`
