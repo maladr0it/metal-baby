@@ -20,7 +20,7 @@ const StatusBar = ({ type, icon }) => {
   let growth = null;
   if (value < lastValue.current - decay) {
     growth = "DECREASING";
-  } else if (value > lastValue.current + decay) {
+  } else if (value > lastValue.current) {
     growth = "INCREASING";
   }
 
