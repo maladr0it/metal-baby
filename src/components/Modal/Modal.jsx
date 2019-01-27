@@ -7,7 +7,7 @@ import GameOverScreen from './GameOverScreen';
 
 const Dimmer = styled.div`
   position: absolute;
-  z-index: 100;
+  z-index: 200;
 
   width: 100%;
   max-width: 70vh;
@@ -19,10 +19,10 @@ const Dimmer = styled.div`
 
 const Container = styled.div`
   position: absolute;
-  top: 40%;
+  top: 60%;
   left: 50%;
-  transform: translateX(-50%) translateY(-40%);
-  z-index: 100;
+  transform: translateX(-50%) translateY(-60%);
+  z-index: 300;
 `;
 
 const Modal = () => {

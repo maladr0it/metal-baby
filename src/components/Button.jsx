@@ -10,9 +10,11 @@ const Button = styled.button`
   background-image: ${({ theme }) =>
     `linear-gradient(-45deg, ${theme.primary}, ${theme.secondary})`};
   color: ${({ theme }) => theme.background};
+  box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.2);
 
   letter-spacing: 0.2rem;
   text-transform: uppercase;
+
   cursor: pointer;
 
   &:hover {

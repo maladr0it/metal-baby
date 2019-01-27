@@ -1,14 +1,18 @@
-import React, { useContext } from "react";
-import styled from "styled-components";
+import React, { useContext } from 'react';
+import styled from 'styled-components';
 
-import { ticksPerYear } from "../gameConfig";
-import GameStateContext from "./GameStateContext";
+import { ticksPerYear } from '../gameConfig';
+import GameStateContext from './GameStateContext';
 
 const Container = styled.div`
-  height: 1.5rem;
-  margin: 0 1rem;
-  font-size: 1.5rem;
-  line-height: 1.5rem;
+  flex: 1 1 0;
+
+  height: 2rem;
+
+  color: ${({ theme }) => theme.tertiary};
+
+  font-size: 1.3rem;
+  line-height: 1.3rem;
 `;
 
 const Debug = styled.span`
@@ -23,7 +27,7 @@ const Score = () => {
 
   return (
     <Container>
-      <span>SCORE: {age}</span>
+      <p>SCORE: {age}</p>
     </Container>
   );
 };

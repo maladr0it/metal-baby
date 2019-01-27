@@ -1,10 +1,10 @@
 import React, { useContext } from 'react';
 import styled, { keyframes } from 'styled-components';
 
-import { tickPeriod } from "../../gameConfig";
-import { IDLE } from "../../constants/taskTypes";
-import GameStateContext from "../GameStateContext";
-import TaskBlock from "./TaskBlock";
+import { tickPeriod } from '../../gameConfig';
+import { IDLE } from '../../constants/taskTypes';
+import GameStateContext from '../GameStateContext';
+import TaskBlock from './TaskBlock';
 
 const trackLength = 6;
 const ticksBefore = 1;
@@ -30,7 +30,6 @@ const TaskTrack = () => {
         </TaskBlockContainer>
       </Track>
       <Clip />
-      {/* <VerticalRule /> */}
     </Container>
   );
 };
@@ -38,11 +37,12 @@ const TaskTrack = () => {
 const Container = styled.div`
   position: relative;
 
-  flex: 1;
-  padding: 0.5rem;
+  flex: 5 1 0;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  /* visually center task track in HUD */
+  margin-top: -0.4rem;
 `;
 
 const slide = keyframes`
@@ -54,32 +54,27 @@ const slide = keyframes`
 const Track = styled.div`
   overflow: hidden;
   border-radius: 0.3rem;
+  height: 50%;
 `;
 
 const TaskBlockContainer = styled.div`
+  position: relative;
+
   display: flex;
   width: ${(trackLength / (trackLength - 1)) * 100}%;
+  height: 100%;
+
   background-color: ${({ theme }) => theme.disabled};
+
   animation: ${slide} ${tickPeriod}s linear;
   animation-fill-mode: forwards;
-`;
-
-const VerticalRule = styled.div`
-  position: absolute;
-  left: ${(100 * ticksBefore) / (trackLength - 1)}%;
-  transform: translateX(25%);
-
-  height: 100%;
-  width: 0.2rem;
-
-  background-color: ${({ theme }) => theme.highlight};
 `;
 
 const Clip = styled.div`
   position: absolute;
   margin-left: -0.3rem;
   width: ${(100 * ticksBefore) / (trackLength - 1)}%;
-  height: 2rem;
+  height: 60%;
   background-color: ${({ theme }) => theme.background};
   opacity: 0.8;
   border-right: ${({ theme }) => ` 0.2rem solid ${theme.highlight}`};
