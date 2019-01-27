@@ -1,13 +1,14 @@
-import React, { useContext, useRef, useEffect } from "react";
-import styled from "styled-components";
+import React, { useContext, useRef, useEffect } from 'react';
+import styled from 'styled-components';
 
-import { tickPeriod } from "../gameConfig";
-import { gameTicked } from "../actions";
+import Score from './Score';
+import HouseMap from './HouseMap';
+import Hud from './Hud';
+import Modal from './Modal';
 
-import GameStateContext from "./GameStateContext";
-import Score from "./Score";
-import HouseMap from "./HouseMap";
-import Hud from "./Hud";
+import { tickPeriod } from '../gameConfig';
+import { gameTicked } from '../actions';
+import GameStateContext from './GameStateContext';
 
 const Container = styled.div`
   height: 100%;
@@ -46,6 +47,7 @@ const Game = () => {
       <Score />
       <HouseMap />
       <Hud />
+      <Modal />
     </Container>
   );
 };

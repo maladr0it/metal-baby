@@ -1,16 +1,31 @@
-import React, { useContext } from "react";
-import styled from "styled-components";
+import React, { useContext } from 'react';
+import styled from 'styled-components';
 
-import { gameStarted } from "../../actions";
-import GameStateContext from "../GameStateContext";
+import Button from '../Button';
+
+import { gameStarted } from '../../actions';
+import GameStateContext from '../GameStateContext';
+
+const Container = styled.div`
+  padding: 1rem;
+  border-radius: 0.3rem;
+  background-color: ${({ theme }) => theme.background};
+
+  color: ${({ theme }) => theme.tertiary};
+  text-align: center;
+
+  ${Button} {
+    margin-top: 1rem;
+  }
+`;
 
 const LandingScreen = () => {
   const { dispatch } = useContext(GameStateContext);
   return (
-    <div>
-      <h1>WELCOME_TO_GAME!</h1>
-      <button onClick={() => dispatch(gameStarted())}>START!</button>
-    </div>
+    <Container>
+      <h1>Take good care of your baby robot!</h1>
+      <Button onClick={() => dispatch(gameStarted())}>START!</Button>
+    </Container>
   );
 };
 

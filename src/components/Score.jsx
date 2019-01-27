@@ -1,9 +1,5 @@
-import React, { useContext } from "react";
-import styled from "styled-components";
-
-import { EAT, BATHE, PLAY } from "../constants/taskTypes";
-import { taskAdded } from "../actions";
-import GameStateContext from "./GameStateContext";
+import React from 'react';
+import styled from 'styled-components';
 
 const Container = styled.div`
   height: 1.5rem;
@@ -18,24 +14,9 @@ const Debug = styled.span`
 `;
 
 const Score = () => {
-  const { dispatch } = useContext(GameStateContext);
-
-  const eat = () => {
-    dispatch(taskAdded(EAT));
-  };
-  const bathe = () => {
-    dispatch(taskAdded(BATHE));
-  };
-  const play = () => {
-    dispatch(taskAdded(PLAY));
-  };
-
   return (
     <Container>
       <span>SCORE: 100</span>
-      <button onClick={eat}>EAT</button>
-      <button onClick={bathe}>BATHE</button>
-      <button onClick={play}>PLAY</button>
     </Container>
   );
 };
