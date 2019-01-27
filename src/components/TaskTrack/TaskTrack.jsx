@@ -55,6 +55,7 @@ const Track = styled.div`
   overflow: hidden;
   border-radius: 0.3rem;
   height: 50%;
+  box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.1);
 `;
 
 const TaskBlockContainer = styled.div`

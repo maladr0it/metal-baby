@@ -1,13 +1,13 @@
-import React, { useContext, useRef } from "react";
-import styled, { css } from "styled-components";
+import React, { useContext, useRef } from 'react';
+import styled, { css } from 'styled-components';
 
 import {
   tickPeriod,
   initialNeeds,
   maxNeeds,
   needsDecay
-} from "../../gameConfig";
-import GameStateContext from "../GameStateContext";
+} from '../../gameConfig';
+import GameStateContext from '../GameStateContext';
 
 const StatusBar = ({ type, icon }) => {
   const { state } = useContext(GameStateContext);
@@ -19,9 +19,9 @@ const StatusBar = ({ type, icon }) => {
 
   let growth = null;
   if (value < lastValue.current - decay) {
-    growth = "DECREASING";
+    growth = 'DECREASING';
   } else if (value > lastValue.current) {
-    growth = "INCREASING";
+    growth = 'INCREASING';
   }
 
   // store the value in the a ref for next time
@@ -29,7 +29,7 @@ const StatusBar = ({ type, icon }) => {
 
   return (
     <Container>
-      <IconContainer>
+      <IconContainer growth={growth}>
         <i className={icon} />
       </IconContainer>
       <ProgressBarTrack>
@@ -47,6 +47,20 @@ const Container = styled.div`
   align-items: center;
 `;
 
+const growthStyle = ({ growth, theme }) => {
+  if (growth === 'INCREASING') {
+    return css`
+      background: ${theme.highlight} none;
+      transition: width ${tickPeriod / 6}s linear;
+    `;
+  } else if (growth === 'DECREASING') {
+    return css`
+      background: ${theme.warning} none;
+      transition: width ${tickPeriod / 6}s linear;
+    `;
+  }
+};
+
 const IconContainer = styled.div`
   display: flex;
   justify-content: center;
@@ -56,10 +70,12 @@ const IconContainer = styled.div`
   border-radius: 50%;
 
   font-size: 1rem;
-
-  background-image: ${({ theme }) =>
-    `linear-gradient(-45deg, ${theme.primary}, ${theme.secondary})`};
+  background-color: ${({ theme }) => theme.primary};
   color: ${({ theme }) => theme.background};
+  box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.1);
+
+  ${growthStyle}
+  transition: 0.3s;
 `;
 
 const ProgressBarTrack = styled.div`
@@ -71,21 +87,8 @@ const ProgressBarTrack = styled.div`
   border-radius: 0.3rem;
 
   background-color: #ecf8ee;
+  box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.1);
 `;
-
-const growthStyle = ({ growth }) => {
-  if (growth === "INCREASING") {
-    return css`
-      background-color: green;
-      transition: width ${tickPeriod / 6}s linear;
-    `;
-  } else if (growth === "DECREASING") {
-    return css`
-      background-color: red;
-      transition: width ${tickPeriod / 6}s linear;
-    `;
-  }
-};
 
 const ActiveProgressBar = styled.span`
   position: absolute;
@@ -94,8 +97,9 @@ const ActiveProgressBar = styled.span`
   border-radius: 0.3rem;
   margin-left: 0.1rem;
   transition: width ${tickPeriod}s linear;
-  background-color: ${({ theme }) => theme.highlight};
+  background-color: ${({ theme }) => theme.primary};
   ${growthStyle};
+  transition: 0.3s;
 `;
 
 export default StatusBar;
