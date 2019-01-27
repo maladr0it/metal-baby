@@ -1,12 +1,12 @@
-import React, { useContext } from "react";
-import styled, { keyframes } from "styled-components";
+import React, { useContext } from 'react';
+import styled, { keyframes } from 'styled-components';
 
-import { IDLE } from "../../constants/activityTypes";
-import GameStateContext from "../GameStateContext";
-import TaskBlock from "./TaskBlock";
+import { IDLE } from '../../constants/activityTypes';
+import GameStateContext from '../GameStateContext';
+import TaskBlock from './TaskBlock';
 
 const trackLength = 6;
-const ticksBefore = 2;
+const ticksBefore = 1;
 const TaskTrack = () => {
   const { state } = useContext(GameStateContext);
   const { tasks, time } = state;
@@ -28,7 +28,8 @@ const TaskTrack = () => {
           ))}
         </TaskBlockContainer>
       </Track>
-      <VerticalRule />
+      <Clip />
+      {/* <VerticalRule /> */}
     </Container>
   );
 };
@@ -66,10 +67,20 @@ const VerticalRule = styled.div`
   position: absolute;
   left: ${(100 * ticksBefore) / (trackLength - 1)}%;
   transform: translateX(25%);
+
   height: 100%;
   width: 0.2rem;
 
   background-color: ${({ theme }) => theme.highlight};
 `;
 
+const Clip = styled.div`
+  position: absolute;
+  margin-left: -0.3rem;
+  width: ${(100 * ticksBefore) / (trackLength - 1)}%;
+  height: 2rem;
+  background-color: ${({ theme }) => theme.background};
+  opacity: 0.8;
+  border-right: ${({ theme }) => ` 0.2rem solid ${theme.highlight}`};
+`;
 export default TaskTrack;

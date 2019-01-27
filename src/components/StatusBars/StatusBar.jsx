@@ -1,5 +1,5 @@
-import React from "react";
-import styled, { keyframes } from "styled-components";
+import React from 'react';
+import styled from 'styled-components';
 import { tickPeriod } from '../../gameConfig';
 
 const StatusBar = ({ icon, width }) => (
@@ -30,7 +30,7 @@ const IconContainer = styled.div`
   height: 1.5rem;
   border-radius: 50%;
 
-  font-size: 0.8rem;
+  font-size: 1rem;
 
   background-image: ${({ theme }) =>
     `linear-gradient(-45deg, ${theme.primary}, ${theme.secondary})`};
@@ -41,7 +41,7 @@ const ProgressBarTrack = styled.div`
   position: relative;
 
   flex: 1;
-  height: 0.5rem;
+  height: 1rem;
   margin-left: 0.1rem;
   border-radius: 0.3rem;
 
@@ -52,9 +52,8 @@ const ActiveProgressBar = styled.span`
   position: absolute;
 
   width: 50%;
-  height: 0.5rem;
+  height: 100%;
   border-radius: 0.3rem;
-  margin-left: 0.1rem;
 
   transition: ${tickPeriod}s;
 

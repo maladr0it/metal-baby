@@ -1,5 +1,5 @@
-import * as ACTIONS from "./constants/actionTypes";
-import { EAT, BATHE, PLAY, IDLE } from "./constants/activityTypes";
+import * as ACTIONS from './constants/actionTypes';
+import { EAT, BATHE, PLAY, IDLE } from './constants/activityTypes';
 import {
   initialNeeds,
   needsDecay,
@@ -7,11 +7,11 @@ import {
   batheEffect,
   playEffect,
   idleEffect
-} from "./gameConfig";
+} from './gameConfig';
 
 export const initialState = {
   time: 2, // to allow for past events to be seen
-  tasks: [IDLE, IDLE, IDLE, EAT],
+  tasks: [IDLE, IDLE, IDLE, EAT, EAT, BATHE, EAT, BATHE, EAT, BATHE],
   needs: initialNeeds
 };
 
