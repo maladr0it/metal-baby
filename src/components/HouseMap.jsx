@@ -51,9 +51,10 @@ const MapImageContainer = styled.div`
   position: absolute;
   top: 0;
   width: 100%;
-  img {
-    width: 100%;
-  }
+`;
+
+const ZImage = styled.img`
+  width: 100%;
 `;
 
 const HouseMap = () => {
@@ -77,7 +78,12 @@ const HouseMap = () => {
     <Container>
       <ImageBoundsPusher src={BlankPixel} />
       <MapImageContainer>
-        <img src={TaskImage} alt="game state" />
+        <ZImage src={EatImage} hidden={currentTask !== EAT} />
+        <ZImage src={BatheImage} hidden={currentTask !== BATHE} />
+        <ZImage src={PlayImage} hidden={currentTask !== PLAY} />
+        <ZImage src={IdleImage} hidden={currentTask !== IDLE} />
+
+        {/* <img src={TaskImage} alt="game state" /> */}
       </MapImageContainer>
       {playing && (
         <>
