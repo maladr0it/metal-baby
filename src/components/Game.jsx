@@ -42,7 +42,7 @@ const Game = () => {
   );
 
   return (
-    <Container>
+    <Container onTouchStart={() => {}}>
       <Hud />
       <HouseMap />
       <Modal />

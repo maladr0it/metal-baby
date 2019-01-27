@@ -28,6 +28,7 @@ const Container = styled.div`
   &:not(:first-child) {
     padding-left: 0.2rem;
   }
+
 `;
 
 const TaskBlock = ({ type }) => (

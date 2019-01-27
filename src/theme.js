@@ -5,7 +5,8 @@ const theme = {
   background: '#FEFEFE',
   highlight: '#6EEDB8',
   disabled: '#ecf8ee',
-  warning: '#EF9F64'
+  warning: '#EF9F64',
+  danger: '#ef6464'
 };
 
 export default theme;

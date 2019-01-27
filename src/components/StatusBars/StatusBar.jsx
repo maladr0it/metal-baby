@@ -29,7 +29,7 @@ const StatusBar = ({ type, icon }) => {
 
   return (
     <Container>
-      <IconContainer growth={growth}>
+      <IconContainer value={value} max={max} growth={growth}>
         <i className={icon} />
       </IconContainer>
       <ProgressBarTrack>
@@ -61,6 +61,15 @@ const growthStyle = ({ growth, theme }) => {
   }
 };
 
+const dangerStyle = ({ value, max, theme }) => {
+  const percentage = value / max;
+  if (percentage <= 0.2) {
+    return css`
+      background: ${theme.danger} none;
+    `;
+  }
+};
+
 const IconContainer = styled.div`
   display: flex;
   justify-content: center;
@@ -76,6 +85,8 @@ const IconContainer = styled.div`
 
   ${growthStyle}
   transition: 0.3s;
+
+  ${dangerStyle}
 `;
 
 const ProgressBarTrack = styled.div`
@@ -100,6 +111,7 @@ const ActiveProgressBar = styled.span`
   background-color: ${({ theme }) => theme.primary};
   ${growthStyle};
   transition: 0.3s;
+  ${dangerStyle}
 `;
 
 export default StatusBar;
