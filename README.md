@@ -1,4 +1,4 @@
-# Baby Metal
+# Metal Baby
 
 Made for the 2019 global game-jam.
 
