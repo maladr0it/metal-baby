@@ -1,7 +1,6 @@
 import React, { useContext, useRef, useEffect } from 'react';
 import styled from 'styled-components';
 
-import Score from './Score';
 import HouseMap from './HouseMap';
 import Hud from './Hud';
 import Modal from './Modal';
@@ -44,9 +43,8 @@ const Game = () => {
 
   return (
     <Container>
-      <Score />
-      <HouseMap />
       <Hud />
+      <HouseMap />
       <Modal />
     </Container>
   );

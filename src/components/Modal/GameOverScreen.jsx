@@ -16,6 +16,7 @@ const Container = styled.div`
 
   ${Button} {
     margin-top: 1rem;
+    box-shadow: none;
   }
 `;
 
