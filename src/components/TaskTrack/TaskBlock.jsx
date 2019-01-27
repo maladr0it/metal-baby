@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
-import { IDLE } from "../../constants/activityTypes";
+import { IDLE } from "../../constants/taskTypes";
 
 const Container = styled.div`
   flex: 1;

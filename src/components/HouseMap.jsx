@@ -1,8 +1,9 @@
-import React from 'react';
-import styled from 'styled-components';
+import React from "react";
+import styled from "styled-components";
 
 import MapImage from "../assets/test_map5.png";
-import Button from './Button';
+import Modal from "./Modal";
+import Button from "./Button";
 
 const StyledImg = styled.img`
   width: 100%;
@@ -10,6 +11,7 @@ const StyledImg = styled.img`
 
 const HouseMap = () => (
   <Container>
+    <Modal />
     <StyledImg src={MapImage} />
     <Button>EAT</Button>
   </Container>

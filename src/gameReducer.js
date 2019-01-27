@@ -1,5 +1,5 @@
 import * as ACTIONS from "./constants/actionTypes";
-import { EAT, BATHE, PLAY, IDLE } from "./constants/activityTypes";
+import { EAT, BATHE, PLAY, IDLE } from "./constants/taskTypes";
 import {
   initialNeeds,
   needsDecay,
@@ -38,7 +38,6 @@ const game = (state = initialState, action) => {
       // check for game over
       if (checkGameOver(state.needs)) {
         console.log("game over");
-
         return {
           ...state,
           playing: false,
@@ -55,8 +54,6 @@ const game = (state = initialState, action) => {
         currentTask = IDLE;
         newTasks[newTime] = currentTask;
       }
-
-      console.log("current task:", currentTask);
 
       const taskEffect = effectMap[currentTask];
       // decay each need, apply the current action from the queue
@@ -78,6 +75,7 @@ const game = (state = initialState, action) => {
         time: newTime
       };
     }
+
     case ACTIONS.TASK_ADDED: {
       const { task } = action;
       return {
@@ -85,12 +83,14 @@ const game = (state = initialState, action) => {
         tasks: [...state.tasks, task]
       };
     }
+
     case ACTIONS.GAME_STARTED: {
       return {
         ...initialState,
         playing: true
       };
     }
+
     default:
       return state;
   }

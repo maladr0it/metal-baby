@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import styled, { keyframes } from "styled-components";
 
 import { tickPeriod } from "../../gameConfig";
-import { IDLE } from "../../constants/activityTypes";
+import { IDLE } from "../../constants/taskTypes";
 import GameStateContext from "../GameStateContext";
 import TaskBlock from "./TaskBlock";
 

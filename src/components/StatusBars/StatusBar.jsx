@@ -1,11 +1,31 @@
-import React, { useContext } from "react";
-import styled from "styled-components";
+import React, { useContext, useRef } from "react";
+import styled, { css } from "styled-components";
 
-import { tickPeriod, maxNeeds } from "../../gameConfig";
+import {
+  tickPeriod,
+  initialNeeds,
+  maxNeeds,
+  needsDecay
+} from "../../gameConfig";
 import GameStateContext from "../GameStateContext";
 
 const StatusBar = ({ type, icon }) => {
   const { state } = useContext(GameStateContext);
+  const lastValue = useRef(initialNeeds[type]);
+
+  const value = state.needs[type];
+  const decay = needsDecay[type];
+  const max = maxNeeds[type];
+
+  let growth = null;
+  if (value < lastValue.current - decay) {
+    growth = "DECREASING";
+  } else if (value > lastValue.current + decay) {
+    growth = "INCREASING";
+  }
+
+  // store the value in the a ref for next time
+  lastValue.current = value;
 
   return (
     <Container>
@@ -13,7 +33,7 @@ const StatusBar = ({ type, icon }) => {
         <i className={icon} />
       </IconContainer>
       <ProgressBarTrack>
-        <ActiveProgressBar value={state.needs[type]} max={maxNeeds[type]} />
+        <ActiveProgressBar value={value} max={max} growth={growth} />
       </ProgressBarTrack>
     </Container>
   );
@@ -53,14 +73,27 @@ const ProgressBarTrack = styled.div`
   background-color: #ecf8ee;
 `;
 
+const growthStyle = ({ growth }) => {
+  if (growth === "INCREASING") {
+    return css`
+      background-color: green;
+    `;
+  } else if (growth === "DECREASING") {
+    return css`
+      background-color: red;
+    `;
+  }
+};
+
 const ActiveProgressBar = styled.span`
   position: absolute;
   width: ${props => (props.value / props.max) * 100}%;
   height: 100%;
   border-radius: 0.3rem;
   margin-left: 0.1rem;
-  transition: ${tickPeriod}s linear;
+  transition: width ${tickPeriod}s linear;
   background-color: ${({ theme }) => theme.highlight};
+  ${growthStyle};
 `;
 
 export default StatusBar;
