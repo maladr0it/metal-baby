@@ -2,7 +2,7 @@
 // lower is faster :S
 export const initialSpeed = 2.5;
 export const ticksPerSpeedup = 5;
-export const speedUpPercent = 15;
+export const speedUpPercent = 30;
 export const maxSpeed = 1;
 export const ticksPerYear = 5;
 
@@ -21,8 +21,8 @@ export const initialNeeds = {
 // How much your stats decay each tick
 export const needsDecay = {
   hunger: 12,
-  hygiene: 8,
-  fun: 6
+  hygiene: 10,
+  fun: 8
 };
 
 // How much random variance effects have on your needs
@@ -31,14 +31,14 @@ export const effectVariance = 0.5;
 // The effects of each activity
 export const eatEffect = {
   hunger: +50,
-  hygiene: -12,
-  fun: -12
+  hygiene: -20,
+  fun: +10
 };
 
 export const batheEffect = {
-  hunger: -12,
+  hunger: 0,
   hygiene: +50,
-  fun: -12
+  fun: -20
 };
 
 export const playEffect = {
