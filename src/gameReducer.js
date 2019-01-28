@@ -22,7 +22,8 @@ export const initialState = {
   needs: initialNeeds,
   speed: initialSpeed,
   playing: false,
-  gameOver: false
+  gameOver: false,
+  gameNumber: 0
 };
 
 const effectMap = {
@@ -102,7 +103,8 @@ const game = (state = initialState, action) => {
     case ACTIONS.GAME_STARTED: {
       return {
         ...initialState,
-        playing: true
+        playing: true,
+        gameNumber: state.gameNumber + 1
       };
     }
 

@@ -77,7 +77,7 @@ const StatusBar = ({ type, icon }) => {
   const { state } = useContext(GameStateContext);
   const lastValue = useRef(initialNeeds[type]);
 
-  const { speed } = state;
+  const { speed, gameNumber } = state;
   const value = state.needs[type];
   const decay = needsDecay[type];
   const max = maxNeeds[type];
@@ -98,6 +98,8 @@ const StatusBar = ({ type, icon }) => {
       </IconContainer>
       <ProgressBarTrack>
         <ActiveProgressBar
+          // re-mounts the bars when a new game starts, removing animation
+          key={gameNumber}
           value={value}
           max={max}
           growth={growth}
