@@ -20,7 +20,7 @@ export const initialNeeds = {
 
 // How much your stats decay each tick
 export const needsDecay = {
-  hunger: 10,
+  hunger: 12,
   hygiene: 8,
   fun: 6
 };
@@ -30,21 +30,21 @@ export const effectVariance = 0.5;
 
 // The effects of each activity
 export const eatEffect = {
-  hunger: +40,
-  hygiene: -10,
-  fun: 0
+  hunger: +50,
+  hygiene: -12,
+  fun: -12
 };
 
 export const batheEffect = {
-  hunger: 0,
-  hygiene: +40,
-  fun: -10
+  hunger: -12,
+  hygiene: +50,
+  fun: -12
 };
 
 export const playEffect = {
-  hunger: -10,
-  hygiene: 0,
-  fun: +40
+  hunger: -12,
+  hygiene: -12,
+  fun: +50
 };
 
 export const idleEffect = {

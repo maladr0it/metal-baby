@@ -29,10 +29,11 @@ const Content = styled.div`
 const Game = () => {
   const { state, dispatch } = useContext(GameStateContext);
   const timeoutRef = useRef(null);
+  const speedRef = useRef(null);
   const { playing, speed } = state;
 
+  // TODO: find another way to achieve this
   // store speed in a ref so that it is visible from within tick()
-  const speedRef = useRef(null);
   speedRef.current = speed;
 
   const tick = () => {
