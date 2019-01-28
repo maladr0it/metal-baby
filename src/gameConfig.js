@@ -1,4 +1,4 @@
-// How many ms per game-tick
+// How many seconds per game-tick
 // lower is faster :S
 export const initialSpeed = 2.5;
 export const ticksPerSpeedup = 5;
@@ -26,7 +26,7 @@ export const needsDecay = {
 };
 
 // How much random variance effects have on your needs
-export const effectVariance = 0.3;
+export const effectVariance = 0.5;
 
 // The effects of each activity
 export const eatEffect = {
