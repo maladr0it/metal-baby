@@ -1,6 +1,9 @@
 // How many ms per game-tick
-export const tickPeriod = 1;
-
+// lower is faster :S
+export const initialSpeed = 2;
+export const ticksPerSpeedup = 2;
+export const speedUpPercent = 10;
+export const maxSpeed = 0.7;
 export const ticksPerYear = 5;
 
 export const maxNeeds = {
@@ -21,6 +24,9 @@ export const needsDecay = {
   hygiene: 8,
   fun: 6
 };
+
+// How much random variance effects have on your needs
+export const effectVariance = 0.5;
 
 // The effects of each activity
 export const eatEffect = {

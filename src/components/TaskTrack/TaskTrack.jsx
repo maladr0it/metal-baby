@@ -1,7 +1,6 @@
 import React, { useContext } from "react";
 import styled, { keyframes } from "styled-components";
 
-import { tickPeriod } from "../../gameConfig";
 import { IDLE } from "../../constants/taskTypes";
 import GameStateContext from "../GameStateContext";
 import TaskBlock from "./TaskBlock";
@@ -26,14 +25,11 @@ const slide = keyframes`
 
 const TaskBlockContainer = styled.div`
   position: relative;
-
   display: flex;
   width: ${(trackLength / (trackLength - 1)) * 100}%;
   height: 100%;
-
   background-color: ${({ theme }) => theme.disabled};
-
-  animation: ${slide} ${tickPeriod}s linear;
+  animation: ${slide} ${props => props.speed}s linear;
   animation-fill-mode: forwards;
 `;
 
@@ -50,8 +46,7 @@ const Clip = styled.div`
 
 const TaskTrack = () => {
   const { state } = useContext(GameStateContext);
-  const { tasks, time } = state;
-
+  const { tasks, time, speed } = state;
   // get only the tasks within the acceptable range
   const getVisibleTasks = () =>
     Array.from({ length: trackLength }).map((_, i) =>
@@ -62,9 +57,9 @@ const TaskTrack = () => {
 
   return (
     <Container>
-      <TaskBlockContainer key={time}>
+      <TaskBlockContainer key={time} speed={speed}>
         {getVisibleTasks().map((task, i) => (
-          <TaskBlock key={i} type={task} />
+          <TaskBlock key={time + i} type={task} />
         ))}
       </TaskBlockContainer>
       <Clip />

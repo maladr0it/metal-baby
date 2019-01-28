@@ -12,20 +12,17 @@ const ICONS = {
 
 const Container = styled.div`
   flex: 1;
-
   display: flex;
   flex-direction: column;
   justify-content: center;
+  height: 100%;
   border-radius: 0.3rem;
   margin: 0 0.1rem;
-
-  background-color: ${({ theme }) => theme.primary};
   visibility: ${props => (props.type === IDLE ? "hidden" : "visible")};
   text-align: center;
+  background-color: ${({ theme }) => theme.primary};
   color: ${({ theme }) => theme.background};
-  height: 100%;
   font-size: 1.5rem;
-
   &:not(:first-child) {
     padding-left: 0.2rem;
   }

@@ -5,7 +5,6 @@ import HouseMap from "./HouseMap";
 import Hud from "./Hud";
 import Modal from "./Modal";
 
-import { tickPeriod } from "../gameConfig";
 import { gameTicked } from "../actions";
 import GameStateContext from "./GameStateContext";
 
@@ -29,22 +28,27 @@ const Content = styled.div`
 
 const Game = () => {
   const { state, dispatch } = useContext(GameStateContext);
-  const intervalRef = useRef(null);
-  const { playing } = state;
+  const timeoutRef = useRef(null);
+  const { playing, speed } = state;
+
+  // store speed in a ref so that it is visible from within tick()
+  const speedRef = useRef(null);
+  speedRef.current = speed;
 
   const tick = () => {
     dispatch(gameTicked());
+    timeoutRef.current = setTimeout(tick, speedRef.current * 1000);
   };
 
   // If the game starts, begin the game loop
   useEffect(
     () => {
       if (playing) {
-        intervalRef.current = setInterval(tick, tickPeriod * 1000);
+        tick();
       } else {
-        clearInterval(intervalRef.current);
+        clearInterval(timeoutRef.current);
       }
-      return () => clearInterval(intervalRef.current);
+      return () => clearInterval(timeoutRef.current);
     },
     [playing]
   );

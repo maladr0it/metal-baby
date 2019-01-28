@@ -2,12 +2,17 @@ import * as ACTIONS from "./constants/actionTypes";
 import { EAT, BATHE, PLAY, IDLE } from "./constants/taskTypes";
 import {
   initialNeeds,
+  initialSpeed,
+  ticksPerSpeedup,
+  speedUpPercent,
+  maxSpeed,
   needsDecay,
   eatEffect,
   batheEffect,
   playEffect,
   idleEffect,
-  maxNeeds
+  maxNeeds,
+  effectVariance
 } from "./gameConfig";
 import { clamp } from "./utils";
 
@@ -15,6 +20,7 @@ export const initialState = {
   time: 1, // to allow for past events to be seen
   tasks: [IDLE, IDLE],
   needs: initialNeeds,
+  speed: initialSpeed,
   playing: false,
   gameOver: false
 };
@@ -30,7 +36,7 @@ const checkGameOver = needs =>
   Object.entries(needs).some(([need, value]) => value <= 0);
 
 const game = (state = initialState, action) => {
-  console.log(action);
+  // console.log(action, state);
 
   // TODO: clean this up
   switch (action.type) {
@@ -45,6 +51,13 @@ const game = (state = initialState, action) => {
       }
 
       const newTime = state.time + 1;
+
+      // speed up by % if interval is appropriate
+      let newSpeed = state.speed;
+      if (state.time % ticksPerSpeedup === 0) {
+        newSpeed = Math.max(state.speed * (1 - speedUpPercent / 100), maxSpeed);
+      }
+
       let currentTask = state.tasks[newTime];
 
       let newTasks = [...state.tasks];
@@ -58,8 +71,10 @@ const game = (state = initialState, action) => {
       // decay each need, apply the current action from the queue
       const newNeeds = Object.entries(state.needs).reduce(
         (acc, [need, value]) => {
+          const effect =
+            (1 - Math.random() * effectVariance) * taskEffect[need];
           acc[need] = clamp(
-            value - needsDecay[need] + taskEffect[need],
+            value - needsDecay[need] + effect,
             0,
             maxNeeds[need]
           );
@@ -71,7 +86,8 @@ const game = (state = initialState, action) => {
         ...state,
         needs: newNeeds,
         tasks: newTasks,
-        time: newTime
+        time: newTime,
+        speed: newSpeed
       };
     }
 
