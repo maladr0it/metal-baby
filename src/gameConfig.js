@@ -2,7 +2,7 @@
 // lower is faster :S
 export const initialSpeed = 2.5;
 export const ticksPerSpeedup = 5;
-export const speedUpPercent = 15;
+export const speedUpPercent = 10;
 export const maxSpeed = 1;
 export const ticksPerYear = 5;
 
