@@ -26,13 +26,13 @@ export const needsDecay = {
 };
 
 // How much random variance effects have on your needs
-export const effectVariance = 0.5;
+export const effectVariance = 0.3;
 
 // The effects of each activity
 export const eatEffect = {
   hunger: +50,
   hygiene: -20,
-  fun: +10
+  fun: +15
 };
 
 export const batheEffect = {
@@ -42,8 +42,8 @@ export const batheEffect = {
 };
 
 export const playEffect = {
-  hunger: -12,
-  hygiene: -12,
+  hunger: -15,
+  hygiene: -15,
   fun: +50
 };
 
