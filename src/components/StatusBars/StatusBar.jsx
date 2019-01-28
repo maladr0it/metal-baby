@@ -60,9 +60,12 @@ const ProgressBarTrack = styled.div`
   box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.1);
 `;
 
-const ActiveProgressBar = styled.span`
+const ActiveProgressBar = styled.span.attrs(props => ({
+  style: {
+    width: `${(props.value / props.max) * 100}%`
+  }
+}))`
   position: absolute;
-  width: ${props => (props.value / props.max) * 100}%;
   height: 100%;
   transition: width ${props => props.speed}s linear;
   background-color: ${({ theme }) => theme.primary};
