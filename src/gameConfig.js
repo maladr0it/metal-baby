@@ -30,21 +30,21 @@ export const effectVariance = 0.5;
 
 // The effects of each activity
 export const eatEffect = {
-  hunger: +30,
+  hunger: +40,
   hygiene: -10,
   fun: 0
 };
 
 export const batheEffect = {
   hunger: 0,
-  hygiene: +30,
+  hygiene: +40,
   fun: -10
 };
 
 export const playEffect = {
   hunger: -10,
   hygiene: 0,
-  fun: +30
+  fun: +40
 };
 
 export const idleEffect = {
